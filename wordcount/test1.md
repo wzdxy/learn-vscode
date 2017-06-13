@@ -1,2 +1,3 @@
-hello 
-This is a Ext named word count
+# Hello
+
+- This is a Ext named word count

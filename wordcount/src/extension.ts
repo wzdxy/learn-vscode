@@ -73,7 +73,8 @@ class WordCounter{
         if(doc.languageId==='markdown'){
             let wordCount=this._getWordCount(doc);
             //更新状态栏
-            this._statusBarItem.text = wordCount !== 1 ? `${wordCount} Words` : '1 Word';
+            // this._statusBarItem.text = wordCount !== 1 ? `${wordCount} Words` : '1 Word';
+            this._statusBarItem.text = wordCount !== 1 ? `$(pencil) ${wordCount} Words` : '$(pencil) 1 Word';
             this._statusBarItem.show();
         }else{
             this._statusBarItem.hide();
