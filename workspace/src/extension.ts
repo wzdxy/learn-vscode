@@ -2,6 +2,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as path from 'path';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -11,15 +12,13 @@ export function activate(context: vscode.ExtensionContext) {
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "workspace" is now active!');
 
-    console.log('workspaceFolders');
-    for (var i = 0; i < vscode.workspace.workspaceFolders.length; i++) {
-        console.log(vscode.workspace.workspaceFolders[i].uri);
-    }
-
-    console.log('textDoc');
-    for (var i = 0; i < vscode.workspace.textDocuments.length; i++) {
-        console.log(vscode.workspace.textDocuments[i]);
-    }
+    console.log('find');
+    vscode.workspace.findFiles('**/*.md').then(value=>{
+        value.forEach((item,idx)=>{
+            console.log(idx,JSON.stringify(item,null,4));
+        })
+        // console.log(value);
+    });
 
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
