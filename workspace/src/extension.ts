@@ -2,7 +2,6 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import * as path from 'path';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -13,11 +12,15 @@ export function activate(context: vscode.ExtensionContext) {
     console.log('Congratulations, your extension "workspace" is now active!');
 
     console.log('find');
+    let mdFileList=[];
     vscode.workspace.findFiles('**/*.md').then(value=>{
-        value.forEach((item,idx)=>{
-            console.log(idx,JSON.stringify(item,null,4));
+        value.forEach((item,idx)=>{        
+            mdFileList.push({
+                path:item.path,
+                name:item.path.split('/').pop()
+            })        
         })
-        // console.log(value);
+        console.log(mdFileList);
     });
 
     // The command has been defined in the package.json file
