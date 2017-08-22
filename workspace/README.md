@@ -34,7 +34,7 @@ st->e
     },
     'f2':{
         title:'F2',
-        path:'/',
+        path:'',
         children:{
             'ff1':{
                 title:'FF1',

@@ -44,11 +44,42 @@ function genarateContent(){
                 fullPath:fullPath,
                 relativePath:relativePath,
                 pathLevels:relativePath.split(path.sep)
-            })        
+            })   
+            console.log(relativePath);
         })
         console.log(mdFileList);
         return mdFileList;
     });
+}
+
+function fillToContentTree(mdFileList){
+    let mainTree={
+        'root':{
+            title:'ROOT',children:{}
+        }
+    };
+    for(let i=0,m=mdFileList.length;i<m;i++){
+        let pathLevels=mdFileList[i].pathLevels;
+        for(let j=0,depth=pathLevels.length;j<depth;j++){
+            let level=pathLevels[j];
+            // mainTree[level]=fillNode(mainTree,level,pathLevels);
+        }
+    }
+}
+
+function fill(parent,level,pathLevels){
+    for(let j=0,depth=pathLevels.length;j<depth;j++){
+        let level=pathLevels[j];
+        parent[level]=fill(parent,level,pathLevels);
+    }
+}
+
+function fillNode(parent,level,pathLevels){
+    if(!parent.children.hasOwnProperty(level)){
+        parent.children[level]={title:'',path:'',children:{}}
+    }
+    parent.children[level]
+
 }
 
 // this method is called when your extension is deactivated
